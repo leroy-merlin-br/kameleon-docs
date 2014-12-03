@@ -1,5 +1,7 @@
 # Kameleon _Architecture and Technology_
 
+![Kameleon Logo](img/logo.png)
+
 ## Summary
 
 Developed with an agile small team at Leroy Merlin Brazil using a set of new web technologies, **Kameleon is a e-commerce platform that is currently being used in production**, hosted using scalable PAAS cloud and displaying more than 60.000 products and over 1000 categories of complex DIY products. The platform is distributed and highly scalable, designed to automate advanced e-merchandising and merchandising concepts to help customer navigate easily among complex product offering.
@@ -168,3 +170,6 @@ An Kameleon deployment is composed by three kind of servers:
 <blockquote class="emphasys">It's important to know the role of each of this components in order to correctly scale the environment. Also software performance monitoring is recomended in order to find the kind of node that should be added to your deployment in order to handle a hight volume of requests.</blockquote>
 
 ![Deployment Architecture](img/deployment-architecture-diagram.png)
+
+## Core Concepts
+
