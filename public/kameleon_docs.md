@@ -26,16 +26,13 @@ By using this approach, the admininstrators input business rules into the platfo
 ![Kameleon in Action](img/leroy-merlin-br-responsive.png)
 
 
-
-
-
 ## Overview
 
 <small>This section will give you a broad overview of the Kameleon architecture. Later we will dive into individual topics, but before we do this we would like you to understand the lean and lightweight approach we have taken for the design of the Kameleon.</small>
 
 ### Technologied Involved
 
-Kameleon is built on top of the [Laravel Framework](http://laravel.com) using modern PHP code, [MongoDB](http://www.mongodb.org/) as it's primary storage and [Elasticsearch](http://www.elasticsearch.org/) as the Search engine behind the _Advanced Relation_ technology. The plataform is distributed, high performant and all the main components are horizontally scallable.
+Kameleon is built on top of the [Laravel Framework](http://laravel.com) using modern PHP code, [MongoDB](http://www.mongodb.org/) as it's primary storage and [Elasticsearch](http://www.elasticsearch.org/) as the Search engine behind the _Advanced Relation_ technology. The platform is distributed, high performant and all the main components are horizontally scallable.
 
 #### Application Server
 
@@ -48,7 +45,7 @@ _Kameleon Application Server_ has been constructed using Laravel, a web framewor
 
 **MongoDB** is an open-source non-relational document database, and the leading NoSQL database. Written in C++, MongoDB features replication and high availability and scales horizontally without compromising functionality. The storage is based in [JSON-style documents](http://json.org/) with dynamic schemas offer simplicity and power.
 
-The dynamic schema capability of MongoDB is a powerfull feature for handling dynamic attributes of the resources handled by the plataform, for example, a hundred different product types with different attributes. The relational/SQL database solution for dynamic attributes is know as EAV (Entity Attribute Value) which is proven to lead to performance degradation, problems in data type integrity, referential integrity.
+The dynamic schema capability of MongoDB is a powerfull feature for handling dynamic attributes of the resources handled by the platform, for example, a hundred different product types with different attributes. The relational/SQL database solution for dynamic attributes is know as EAV (Entity Attribute Value) which is proven to lead to performance degradation, problems in data type integrity, referential integrity.
 
 > _"What the  SQL Server programming newsgroup post described is called EAV (“Entity-Attribute-Value”) tables and it is a very common schema design error for programmers who started with an OO or a loosely typed programming language."_
 **_- Joe Celko_ - [Avoiding the EAV of Destruction](https://www.simple-talk.com/sql/t-sql-programming/avoiding-the-eav-of-destruction/)**
@@ -59,7 +56,7 @@ The NoSQL capabilities and performance provided by MongoDB creates a persistency
 
 _Kameleon's Advanced Relation Technology_ is built using the **Elasticsearch**, a flexible and powerful open source, distributed, real-time search and analytics engine. Architected from the ground up for use in distributed environments where reliability and scalability are must haves, Elasticsearch gives Kameleon the ability to move easily beyond reference relations between resources and simple full-text searchs.
 
-Through the usage of the Searchengine the plataform can handle facets, analytics and it's _Advanced Relations_. These special kind of relations are based in business rules that can be built using an graphic interface and that will always bring up to date resource that matched by the rules with facet and text-search support.
+Through the usage of the Searchengine the platform can handle facets, analytics and it's _Advanced Relations_. These special kind of relations are based in business rules that can be built using an graphic interface and that will always bring up to date resource that matched by the rules with facet and text-search support.
 
 #### Caching
 
@@ -94,7 +91,7 @@ A typical startup of the preconfigured Kameleon on a Virtual Machine using Vagra
 
 We do not believe that special tools and IDEs should be required to customize our software. Therefore, any PHP IDE or editor can be used for development. We recommend _Sublime Text 3_, but developers are free to choose the tool of preference.
 
-In order to fully understand and customize the plataform code the following profile is recomended:
+In order to fully understand and customize the platform code the following profile is recomended:
 
 1. Experienced Object Oriented developer that knows modern PHP
 2. Understanding of MongoDB/NoSQL concepts
@@ -111,7 +108,7 @@ For development environment (using [Vagrant](#install-and-run)) there is no need
 
 ### Customization
 
-All parts of _Kameleon Application Server_ can be customized, if you wish to. Each inner interface that is referenced through the [IoC Container](http://laravel.com/docs/5.0/container) can be completely replaced. Also, Kameleon can be extended with any _library /package_ that follows the [Composer Convention](https://getcomposer.org/doc/02-libraries.md). Due to that, all the open-source packages listed in the [Packalyst](http://packalyst.com/) and [Packagist.org](https://packagist.org/) can be used to add new capatibilities to the plataform.
+All parts of _Kameleon Application Server_ can be customized, if you wish to. Each inner interface that is referenced through the [IoC Container](http://laravel.com/docs/5.0/container) can be completely replaced. Also, Kameleon can be extended with any _library /package_ that follows the [Composer Convention](https://getcomposer.org/doc/02-libraries.md). Due to that, all the open-source packages listed in the [Packalyst](http://packalyst.com/) and [Packagist.org](https://packagist.org/) can be used to add new capatibilities to the platform.
 
 <blockquote class="emphasys"><em>Kameleon Platform</em> can be extended with any of the <strong>more than 50 thousand</strong> packages available in Packagist.org</blockquote>
 
