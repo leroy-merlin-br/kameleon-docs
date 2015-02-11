@@ -8,7 +8,6 @@ Developed with an agile small team at Leroy Merlin Brazil using a set of new web
 
 Kameleon has the objective to be flexible to different business models and to handle multiple sale channels. In order to be able to handle this complexity while at the sime time lowering costs, improving customer experience, handling rich data about the products and dynamic content. Kameleon uses a powerfull non-tabular engine to handle _Advanced Relations_ between every resource (products, categories, dynamic content and others). By using this approach, the admininstrators input business rules into the plataform instead of focusing in manual operations for each new resource added.
 
-
 <blockquote class="emphasys">This document will give you a technical overview of the <em>Kameleon Platform</em>. We first discuss the key software layers and architecture. Next, we show you how easly it is to get started with the software usage. We cover our built-in as well as how to do custom integrations with external systems.</blockquote>
 
 ![Kameleon in Action](img/leroy-merlin-br-responsive.png)
@@ -67,9 +66,59 @@ By using Laravel queue capabilities with Beanstalkd, Kameleon can handle backgro
 
 Kameleon also uses [Indatus Dispatcher](https://github.com/Indatus/dispatcher), a command scheduling tool used to schedule jobs per environment. This way you can extend the platform to run custom tasks in the background and in a distributed way.
 
+## Development
+
+### Install and Run
+
+_Kameleon Application Server_ is easy to install and run. The whole package is less than 1.0GB. Once unzipped into a local directory, the only requirement to run our software is an up-to-date PHP installation _(greater or equal 5.4)_ with the required extensions and Composer.
+Kameleon also ships with a Vagrantfile and a server recipe which is great for the development phase. Later, in production, the same code that runs on developer machines will also run on the server machines. A typical startup of the preconfigured Kameleon on a Virtual Machine using Vagrant takes less than 20 minutes.
+
+### Developer Profile
+
+We do not believe that special tools and IDEs should be required to customize our software. Therefore, any PHP IDE or editor can be used for development. We recommend Sublime Text, but developers are free to choose the tool of preference.
+
+In order to fully understand and to able to customize the plataform the following profile is recomended:
+
+1. Experienced Object Oriented developer that knows modern PHP
+2. Understanding of MongoDB/NoSQL concepts
+3. Experience writing automated tests using PHPUnit or similar
+4. Knowledge on how the HTTP Protocol works
+
+### Configuration
+
+In Kameleon, most of the configuration is done trought environment variables in the machine where the _Kameleon Application Server_ is running. This approach is more server oriented in order to be more cloud friendly. Most of the cloud solutions allow the use of a single virtual machine image to multiple machines but to customize the environment variables of each one of then. This allows the same server image to be used in all environments (production, staging, etc) where only the environment variables would point to different databases.
+
+Also it is possible to change de configuration files of _Kameleon Application Server_ by hand. They follow the [Laravel config files convention](http://laravel.com/docs/5.0/configuration) and it is possible to repleace the environment variable input with specific values. This approach is fully supported altought it is not recomended, nor considered very maintainable when you have multiple server instances.
+
+### Customization
+
+All parts of _Kameleon Application Server_ can be customized, if you wish to. Each inner interface that is referenced trought the [IoC Container](http://laravel.com/docs/5.0/container) can be completely replaced. Also, Kameleon can be extended with any _library /package_ that follows the [Composer Convention](https://getcomposer.org/doc/02-libraries.md). Due to that, all the open-source packages listed in the [Packalyst](http://packalyst.com/) and [Packagist.org](https://packagist.org/) can be used to add new capatibilities to the plataform.
+
+<blockquote class="emphasys"><em>Kameleon Platform</em> can be extended with any of the more than 50 thousand packages available in Packagist.org</blockquote>
+
+The [Laravel service container](http://laravel.com/docs/5.0/container) is a powerful tool for managing class dependencies. [Dependency injection](http://en.wikipedia.org/wiki/Dependency_injection) is a fancy word that essentially means that class dependencies are _"injected"_ into the class via the constructor or, in some cases, _"setter"_ methods.
+
+There are several ways the service container can register dependencies. The registration of these dependencies allows the developers to easly replace any component of the application. Of course a deep understanding of the Laravel service container is essential to building powerful custom features, as well as for contributing to the _Kameleon Application Server_.
+
+_Kameleon_ is also strong in internationalization by using the [localization feature of Laravel](http://laravel.com/docs/5.0/localization). By default it supports portuguese, but you may create your own translation easly.
+
+.
+
+.
+
+.
+
+.
+
+.
+
+.
+
+.
+
 ### Software Architecture
 
-<small>The _Kameleon Application Server_ is build using the [best practices of PHP programming](http://www.phptherightway.com/). Which includes _OO_, _Design Patterns_, _Coding Standards_, [Composer](https://getcomposer.org) for dependency management, _Test Driven Development_ and _Continuous Integration_. In this section we will present a simplified view on how the main building blocks of the application works.</small>
+<small>The _Kameleon Application Server_ is build using the [best practices of PHP programming](http://www.phptherightway.com/). Which includes _OO_, _Dependency Injection_, _Coding Standards_, [Composer](https://getcomposer.org) for dependency management, _Test Driven Development_ and _Continuous Integration_. In this section we will present a simplified view on how the main building blocks of the application works.</small>
 
 ![Software Architecture](img/software-architecture-diagram.png)
 
@@ -156,7 +205,41 @@ Elasticsearch uses Lucene under the covers to provide the most powerful full tex
 
 The **Domain Objects** persists in a MongoDB database. Some domain objects has it's own collection, but many of then are actually documents that are embedded into other documents.
 
-### Deployment Architecture
+### Software Domain
+
+The models in the are built as described in the previous section [Models](#3-models). The business rules and the logic contained here describe many different cases and behaviors. It's this complexity that the classes within the _Model Layer_ were designed to work with. The Domain Model creates a web of interconnected objects, where each object represents some meaningful individual.
+
+#### Namespaces
+
+When looking at the code in the _Model Layer_, it's important to note that all _domain objects_, _services_ and _repositories_ are placed inside contextual namespaces that will usually explain to which business rule it relates. Also, each namespace contains a `README.md` file that will describe how it works in isolation.
+
+All the dependencies between the namespaces are done trought dependency injection using  [Laravel's IoC Container](http://laravel.com/docs/5.0/container), so it's possible to replace a whole namespace with a custom code once all the interfaces are implemented accordingly.
+
+**List of _Namespaces_:**
+
+Namespace         | Description
+----------------- | -------------
+AdvancedRelation  | Takes care of the relationship between resources (products, categories, materials, videos, etc.). Contains code that abstracts the queries between those relations.
+Assistant         | Backed by the `Assistant` entity, `Variable` and `Output` value objects, this _namespace_ aims to represents a _"wizard"_ that will help the customer to find the right product to the right quantity.
+Carousel          | Handle simple content aggregation such as galeries and carousels.
+Cart              | Implements the shopping cart for eCommerce.
+Checkout          | Assembles and retrieve the objects that are used in the checkout process.
+Content           | Contains all the CMS related code.
+Course            | Handles course scheduling and signup.
+Dashboard         | Group all information that is relevant to the admin panel dashboard.
+Email             | Email related business rules.
+Multitree         | The implementation of the [Multitree concept](http://en.wikipedia.org/wiki/Multitree)
+Picture           | Handles picture domain objects. Also takes care of image croping and resizing.
+Product           | Contains the implementation for the general business rules related to products
+ProductBank       | Mainly contains the _domain object_ that represents each group of products that share the same characteristics.
+Redirection       | Allows the creation of page redirections. Mainly for SEO purposes.
+SaleOrder         | The code related to customer order placement as `SaleOrder` _domain objects_.
+Shipping          | Shipping information for a orders. It gathers cost and delivery dates.
+SiteMapper        | Generates sitemaps for SEO purposes.
+User              | Customer related code
+UserTracker       | Backed by the `UserTrack` entities. This _namespace_ aims to store the behavior and interactions of each user in a level of detail where it is possible to tell which products and matters of interest are that visitor.
+
+## Deployment Architecture
 
 <small>The main components of a Kameleon deployment are distributed and horizontally scalable, being possible to handle a growing volume of request simply by adding more nodes to the deployment.</small>
 
