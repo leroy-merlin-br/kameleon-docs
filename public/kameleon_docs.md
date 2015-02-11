@@ -25,7 +25,6 @@ Kameleon is built on top of the [Laravel Framework](http://laravel.com) using mo
 _Kameleon Application Server_ has been constructed using Laravel, a web framework made to build huge enterprise applications. It is built on top of several [Symfony](http://symfony.com/) components, giving the platform a great foundation of well-tested and reliable code. Laravel core uses the [inversion of control architecture](http://en.wikipedia.org/wiki/Inversion_of_control) to increase modularity of the program and make it extensible
 
 >  _"This inversion of control gives frameworks the power to serve as extensible skeletons. The methods supplied by the user tailor the generic algorithms defined in the framework for a particular application._
-
 **_- Ralph E. Johnson & Brian Foote_ - ["Designing Reusable Classes" Journal of Object-Oriented Programming](http://www.laputan.org/drc/drc.html)**
 
 #### Database
@@ -35,7 +34,6 @@ _Kameleon Application Server_ has been constructed using Laravel, a web framewor
 The dynamic schema capability of MongoDB is a powerfull feature for handling dynamic attributes of the resources handled by the plataform, for example, a hundred different product types with different attributes. The relational/SQL database solution for dynamic attributes is know as EAV (Entity Attribute Value) which is proven to lead to performance degradation, problems in data type integrity, referential integrity.
 
 > _"What the  SQL Server programming newsgroup post described is called EAV (“Entity-Attribute-Value”) tables and it is a very common schema design error for programmers who started with an OO or a loosely typed programming language."_
-
 **_- Joe Celko_ - [Avoiding the EAV of Destruction](https://www.simple-talk.com/sql/t-sql-programming/avoiding-the-eav-of-destruction/)**
 
 The NoSQL capabilities and performance provided by MongoDB creates a persistency layer that is also scalable horizontally.
@@ -55,7 +53,6 @@ For a cached request, many of the application components doens't even need to be
 The storage technology used behind _Kameleon Cache Middleware_ is [Redis](http://redis.io/), an open source, BSD licensed, advanced key-value cache and store database.
 
 > "With more than 5000 pageviews per minute in our production environment we didn't have to use any kind of reverse proxy. _Kameleon Cache Middleware_ handles all the requests, faceted searchs and _advanced relations_ for more than 5 million unique visitors per month with only three server nodes."
-
 **_- Zizaco Zizuini_ - Leroy Merlin Brazil Web Developer**
 
 #### Asynchronous Jobs
@@ -99,7 +96,7 @@ For development environment (using [Vagrant](#install-and-run)) there is no need
 
 All parts of _Kameleon Application Server_ can be customized, if you wish to. Each inner interface that is referenced trought the [IoC Container](http://laravel.com/docs/5.0/container) can be completely replaced. Also, Kameleon can be extended with any _library /package_ that follows the [Composer Convention](https://getcomposer.org/doc/02-libraries.md). Due to that, all the open-source packages listed in the [Packalyst](http://packalyst.com/) and [Packagist.org](https://packagist.org/) can be used to add new capatibilities to the plataform.
 
-<blockquote class="emphasys"><em>Kameleon Platform</em> can be extended with any of the more than 50 thousand packages available in Packagist.org</blockquote>
+<blockquote class="emphasys"><em>Kameleon Platform</em> can be extended with any of the <strong>more than 50 thousand</strong> packages available in Packagist.org</blockquote>
 
 The [Laravel service container](http://laravel.com/docs/5.0/container) is a powerful tool for managing class dependencies. [Dependency injection](http://en.wikipedia.org/wiki/Dependency_injection) is a fancy word that essentially means that class dependencies are _"injected"_ into the class via the constructor or, in some cases, _"setter"_ methods.
 
@@ -208,27 +205,27 @@ All the dependencies between the namespaces are done trought dependency injectio
 
 **List of _Namespaces_:**
 
-Namespace         | Description
------------------ | -------------
-AdvancedRelation  | Takes care of the relationship between resources (products, categories, materials, videos, etc.). Contains code that abstracts the queries between those relations.
-Assistant         | Backed by the `Assistant` entity, `Variable` and `Output` value objects, this _namespace_ aims to represents a _"wizard"_ that will help the customer to find the right product to the right quantity.
-Carousel          | Handle simple content aggregation such as galeries and carousels.
-Cart              | Implements the shopping cart for eCommerce.
-Checkout          | Assembles and retrieve the objects that are used in the checkout process.
-Content           | Contains all the CMS related code.
-Course            | Handles course scheduling and signup.
-Dashboard         | Group all information that is relevant to the admin panel dashboard.
-Email             | Email related business rules.
-Multitree         | The implementation of the [Multitree concept](http://en.wikipedia.org/wiki/Multitree)
-Picture           | Handles picture domain objects. Also takes care of image croping and resizing.
-Product           | Contains the implementation for the general business rules related to products
-ProductBank       | Mainly contains the _domain object_ that represents each group of products that share the same characteristics.
-Redirection       | Allows the creation of page redirections. Mainly for SEO purposes.
-SaleOrder         | The code related to customer order placement as `SaleOrder` _domain objects_.
-Shipping          | Shipping information for a orders. It gathers cost and delivery dates.
-SiteMapper        | Generates sitemaps for SEO purposes.
-User              | Customer related code
-UserTracker       | Backed by the `UserTrack` entities. This _namespace_ aims to store the behavior and interactions of each user in a level of detail where it is possible to tell which products and matters of interest are that visitor.
+Namespace             | Description
+--------------------- | -------------
+`AdvancedRelation`  | Takes care of the relationship between resources (products, categories, materials, videos, etc.). Contains code that abstracts the queries between those relations.
+`Assistant`         | Backed by the `Assistant` entity, `Variable` and `Output` value objects, this _namespace_ aims to represents a _"wizard"_ that will help the customer to find the right product to the right quantity.
+`Carousel`          | Handle simple content aggregation such as galeries and carousels.
+`Cart`              | Implements the shopping cart for eCommerce.
+`Checkout`          | Assembles and retrieve the objects that are used in the checkout process.
+`Content`           | Contains all the CMS related code.
+`Course`            | Handles course scheduling and signup.
+`Dashboard`         | Group all information that is relevant to the admin panel dashboard.
+`Email`             | Email related business rules.
+`Multitree`         | The implementation of the [Multitree concept](http://en.wikipedia.org/wiki/Multitree)
+`Picture`           | Handles picture domain objects. Also takes care of image croping and resizing.
+`Product`           | Contains the implementation for the general business rules related to products
+`ProductBank`       | Mainly contains the _domain object_ that represents each group of products that share the same characteristics.
+`Redirection`       | Allows the creation of page redirections. Mainly for SEO purposes.
+`SaleOrder`         | The code related to customer order placement as `SaleOrder` _domain objects_.
+`Shipping`          | Shipping information for a orders. It gathers cost and delivery dates.
+`SiteMapper`        | Generates sitemaps for SEO purposes.
+`User`              | Customer related code
+`UserTracker`       | Backed by the `UserTrack` entities. This _namespace_ aims to store the behavior and interactions of each user in a level of detail where it is possible to tell which products and matters of interest are that visitor.
 
 ## Deployment Architecture
 
@@ -244,6 +241,3 @@ An Kameleon deployment is composed by four kind of servers:
 <blockquote class="emphasys">It's important to know the role of each of this components in order to correctly scale the environment. Also software performance monitoring is recomended in order to find the kind of node that should be added to your deployment in order to handle a higher volume of requests.</blockquote>
 
 ![Deployment Architecture](img/deployment-architecture-diagram.png)
-
-## Core Concepts
-
