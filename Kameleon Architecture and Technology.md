@@ -70,14 +70,17 @@ Kameleon also uses [Indatus Dispatcher](https://github.com/Indatus/dispatcher), 
 
 ### Install and Run
 
-_Kameleon Application Server_ is easy to install and run. The whole package is less than 1.0GB. Once unzipped into a local directory, the only requirement to run our software is an up-to-date PHP installation _(greater or equal 5.4)_ with the required extensions and Composer.
-Kameleon also ships with a Vagrantfile and a server recipe which is great for the development phase. Later, in production, the same code that runs on developer machines will also run on the server machines. A typical startup of the preconfigured Kameleon on a Virtual Machine using Vagrant takes less than 20 minutes.
+_Kameleon Application Server_ is easy to install and run. The whole package is less than 1.0GB. Once unzipped into a local directory, the only requirement to run our software is an up-to-date PHP installation _(greater or equal 5.4)_ with the required extensions and Composer. Kameleon also ships with a `Vagrantfile` and a server recipe that allows the setup of the development environment to be done using [Vagrant](http://vagrantup.com/).  Later, in production, the same code that runs on developer machines will also run on the server machines.
+
+<blockquote class="emphasys"><em>Vagrant</em> provides easy to configure, reproducible, and portable work environments built on top of industry-standard virtualization technology and controlled by a single consistent workflow to help maximize the productivity and flexibility of you and your team.</blockquote>
+
+A typical startup of the preconfigured Kameleon on a Virtual Machine using Vagrant takes less than 20 minutes.
 
 ### Developer Profile
 
-We do not believe that special tools and IDEs should be required to customize our software. Therefore, any PHP IDE or editor can be used for development. We recommend Sublime Text, but developers are free to choose the tool of preference.
+We do not believe that special tools and IDEs should be required to customize our software. Therefore, any PHP IDE or editor can be used for development. We recommend _Sublime Text 3_, but developers are free to choose the tool of preference.
 
-In order to fully understand and to able to customize the plataform the following profile is recomended:
+In order to fully understand and customize the plataform code the following profile is recomended:
 
 1. Experienced Object Oriented developer that knows modern PHP
 2. Understanding of MongoDB/NoSQL concepts
@@ -89,6 +92,8 @@ In order to fully understand and to able to customize the plataform the followin
 In Kameleon, most of the configuration is done trought environment variables in the machine where the _Kameleon Application Server_ is running. This approach is more server oriented in order to be more cloud friendly. Most of the cloud solutions allow the use of a single virtual machine image to multiple machines but to customize the environment variables of each one of then. This allows the same server image to be used in all environments (production, staging, etc) where only the environment variables would point to different databases.
 
 Also it is possible to change de configuration files of _Kameleon Application Server_ by hand. They follow the [Laravel config files convention](http://laravel.com/docs/5.0/configuration) and it is possible to repleace the environment variable input with specific values. This approach is fully supported altought it is not recomended, nor considered very maintainable when you have multiple server instances.
+
+For development environment (using [Vagrant](#install-and-run)) there is no need to tweak any configuration.
 
 ### Customization
 
@@ -229,14 +234,14 @@ UserTracker       | Backed by the `UserTrack` entities. This _namespace_ aims to
 
 <small>The main components of a Kameleon deployment are distributed and horizontally scalable, being possible to handle a growing volume of request simply by adding more nodes to the deployment.</small>
 
-An Kameleon deployment is composed by three kind of servers:
+An Kameleon deployment is composed by four kind of servers:
 
 - Application server
 - Database servers
 - Searchengine servers
 - Redis servers
 
-<blockquote class="emphasys">It's important to know the role of each of this components in order to correctly scale the environment. Also software performance monitoring is recomended in order to find the kind of node that should be added to your deployment in order to handle a hight volume of requests.</blockquote>
+<blockquote class="emphasys">It's important to know the role of each of this components in order to correctly scale the environment. Also software performance monitoring is recomended in order to find the kind of node that should be added to your deployment in order to handle a higher volume of requests.</blockquote>
 
 ![Deployment Architecture](img/deployment-architecture-diagram.png)
 
