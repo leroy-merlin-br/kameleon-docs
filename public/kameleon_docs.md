@@ -11,52 +11,76 @@ The platform is distributed and highly scalable, designed to automate advanced e
 Kameleon has the objective to be flexible to different business models and to support an Omni channel.
 In environments where product technical complexity is high, you need to mantain lowering costs,
 improve customer's experience, handle rich data about the products and dynamic content, was in this environment Kameleon was built.
+
 Kameleon uses a powerfull non-tabular engine to handle _Advanced Relations_ between every resource (products, categories, dynamic content and others).
 By using this approach, the admininstrators input business rules into the platform instead of focusing in manual operations for each new resource added.
 
-<blockquote class="emphasys">
-    _Kameleon_  offers one culture change in pro to reach the omni channel in retail market, spreading
-    in certain intelligent way the technical knowledgement, implanting all brand's mershadising principles,
-    aiming our dream to deliver the best product, in a good quantity with a fair price for our customers
-    as smoothly in all channels.
-</blockquote>
 
-<blockquote class="emphasys">This document will give you a technical overview of the <em>Kameleon Platform</em>. We first discuss the key software layers and architecture. Next, we show you how easly it is to get started with the software usage. We cover our built-in as well as how to do custom integrations with external systems.</blockquote>
+>    __Kameleon__  offers one culture change in pro to reach the omni channel in retail market, spreading
+in certain intelligent way the technical knowledgement, implanting all brand's mershadising principles,
+aiming our dream to deliver the best product, in a good quantity with a fair price for our customers
+as smoothly in all channels. **_- Guilherme Guitte_ - Leroy Merlin Brazil Web Developer**
+
+
+**This document will give you a technical overview of the <em>Kameleon Platform</em>. At first, we will discuss the key software layers and architecture. Next, we show you how easly it is to get started with the software usage. We cover our built-in as well as how to do custom integrations with external systems.**
+
 
 ![Kameleon in Action](img/leroy-merlin-br-responsive.png)
 
 
 ## Overview
 
-<small>This section will give you a broad overview of the Kameleon architecture. Later we will dive into individual topics, but before we do this we would like you to understand the lean and lightweight approach we have taken for the design of the Kameleon.</small>
+<small>This section will give you a broad overview of the Kameleon architecture. Later we will dive into individual topics, but before we do this,
+we would like you to understand the lean and lightweight approach we have taken for the design of the Kameleon.</small>
 
 ### Technologied Involved
 
-Kameleon is built on top of the [Laravel Framework](http://laravel.com) using modern PHP code, [MongoDB](http://www.mongodb.org/) as it's primary storage and [Elasticsearch](http://www.elasticsearch.org/) as the Search engine behind the _Advanced Relation_ technology. The platform is distributed, high performant and all the main components are horizontally scallable.
+Kameleon is built on top of the [Laravel Framework](http://laravel.com) using modern PHP code,
+[MongoDB](http://www.mongodb.org/) as it's primary storage and [Elasticsearch](http://www.elasticsearch.org/)
+as the Search engine behind the _Advanced Relation_ technology. The platform is distributed, high performant and all
+the main components are horizontally scallable.
 
 #### Application Server
 
-_Kameleon Application Server_ has been constructed using Laravel, a web framework made to build huge enterprise applications. It is built on top of several [Symfony](http://symfony.com/) components, giving the platform a great foundation of well-tested and reliable code. Laravel core uses the [inversion of control architecture](http://en.wikipedia.org/wiki/Inversion_of_control) to increase modularity of the program and make it extensible
+_Kameleon Application Server_ has been constructed using Laravel, a web framework made to build huge enterprise applications.
+It is built on top of several [Symfony](http://symfony.com/) components, giving the platform a great foundation of well-tested
+and reliable code. Laravel core uses the [inversion of control architecture](http://en.wikipedia.org/wiki/Inversion_of_control)
+to increase modularity of the program and make it extensible.
 
 >  _"This inversion of control gives frameworks the power to serve as extensible skeletons. The methods supplied by the user tailor the generic algorithms defined in the framework for a particular application._
 **_- Ralph E. Johnson & Brian Foote_ - ["Designing Reusable Classes" Journal of Object-Oriented Programming](http://www.laputan.org/drc/drc.html)**
 
 #### Database
 
-**MongoDB** is an open-source non-relational document database, and the leading NoSQL database. Written in C++, MongoDB features replication and high availability and scales horizontally without compromising functionality. The storage is based in [JSON-style documents](http://json.org/) with dynamic schemas offer simplicity and power.
+**MongoDB** is an open-source non-relational document database, and the leading NoSQL database.
+Written in C++, the main MongoDB features are replication and high availability, scales horizontally
+without compromising functionality. The storage is based in [JSON-style documents](http://json.org/)
+with dynamic schemas offer simplicity and power.
 
-The dynamic schema capability of MongoDB is a powerfull feature for handling dynamic attributes of the resources handled by the platform, for example, a hundred different product types with different attributes. The relational/SQL database solution for dynamic attributes is know as EAV (Entity Attribute Value) which is proven to lead to performance degradation, problems in data type integrity, referential integrity.
+The dynamic schema capability of MongoDB is a powerfull feature
+for handling dynamic attributes of the resources handled by the platform, for example,
+a hundred different product types with different attributes.
+The relational/SQL database solution for dynamic attributes is know as EAV (Entity Attribute Value)
+which is proven to lead to performance degradation, problems in data type integrity, referential integrity.
 
 > _"What the  SQL Server programming newsgroup post described is called EAV (“Entity-Attribute-Value”) tables and it is a very common schema design error for programmers who started with an OO or a loosely typed programming language."_
 **_- Joe Celko_ - [Avoiding the EAV of Destruction](https://www.simple-talk.com/sql/t-sql-programming/avoiding-the-eav-of-destruction/)**
 
-The NoSQL capabilities and performance provided by MongoDB creates a persistency layer that is also scalable horizontally.
+The NoSQL capabilities and performance provided by MongoDB creates a persistency layer
+that is also scalable horizontally and vertically too.
 
 #### Searchengine
 
-_Kameleon's Advanced Relation Technology_ is built using the **Elasticsearch**, a flexible and powerful open source, distributed, real-time search and analytics engine. Architected from the ground up for use in distributed environments where reliability and scalability are must haves, Elasticsearch gives Kameleon the ability to move easily beyond reference relations between resources and simple full-text searchs.
+_Kameleon's Advanced Relation Technology_ is built using the **Elasticsearch**,
+a flexible and powerful open source, distributed, real-time search and analytics engine.
+Architected from the ground up for use in distributed environments where reliability and scalability
+are must haves, Elasticsearch gives __Kameleon__ the ability to move easily beyond reference relations
+between resources and simple full-text searchs.
 
-Through the usage of the Searchengine the platform can handle facets, analytics and it's _Advanced Relations_. These special kind of relations are based in business rules that can be built using an graphic interface and that will always bring up to date resource that matched by the rules with facet and text-search support.
+Through the usage of the Searchengine the platform can handle facets, analytics and
+it's _Advanced Relations_. These special kind of relations are based in business rules
+that can be built using an graphic interface and that will always bring up to date resource
+that matched by the rules with facet and text-search support.
 
 #### Caching
 
@@ -100,9 +124,15 @@ In order to fully understand and customize the platform code the following profi
 
 ### Configuration
 
-In Kameleon, most of the configuration is done through environment variables in the machine where the _Kameleon Application Server_ is running. This approach is more server oriented in order to be more cloud friendly. Most of the cloud solutions allow the use of a single virtual machine image to multiple machines but to customize the environment variables of each one of then. This allows the same server image to be used in all environments (production, staging, etc) where only the environment variables would point to different databases.
+In Kameleon, most of the configuration is done through environment variables in the machine where the
+_Kameleon Application Server_ is running. This approach is more server oriented in order to be more cloud
+friendly. Most of the cloud solutions allow the use of a single virtual machine image to multiple machines
+but to customize the environment variables of each one of then. This allows the same server image to be
+used in all environments (production, staging, etc) where only the environment variables would point to
+different databases.
 
-Also it is possible to change de configuration files of _Kameleon Application Server_ by hand. They follow the [Laravel config files convention](http://laravel.com/docs/5.0/configuration) and it is possible to repleace the environment variable input with specific values. This approach is fully supported altought it is not recomended, nor considered very maintainable when you have multiple server instances.
+Also it is possible to change de configuration files of _Kameleon Application Server_ by hand.
+They follow the [Laravel config files convention](http://laravel.com/docs/5.0/configuration) and it is possible to repleace the environment variable input with specific values. This approach is fully supported altought it is not recomended, nor considered very maintainable when you have multiple server instances.
 
 For development environment (using [Vagrant](#install-and-run)) there is no need to tweak any configuration.
 
