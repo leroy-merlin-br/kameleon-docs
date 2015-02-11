@@ -4,13 +4,30 @@
 
 ## Summary
 
-Developed with an agile small team at Leroy Merlin Brazil using a set of new web technologies, **Kameleon is a e-commerce platform that is currently being used in production**, hosted using scalable PAAS cloud and displaying more than 60.000 products and over 1000 categories of complex DIY products. The platform is distributed and highly scalable, designed to automate advanced e-merchandising and merchandising concepts to help customer navigate easily among complex product offering.
+Developed with an agile small team at Leroy Merlin Brazil applying a set of new innovate web technologies, **Kameleon is a e-commerce platform that is currently being used in production**, hosted using scalable PAAS
+cloud and displaying more than 60.000 products and over 1000 categories of complex DIY products.
+The platform is distributed and highly scalable, designed to automate advanced e-merchandising and merchandising concepts to help customer navigate easily to find the right product, in good quantity with a good price.
 
-Kameleon has the objective to be flexible to different business models and to handle multiple sale channels. In order to be able to handle this complexity while at the same time lowering costs, improving customer experience, handling rich data about the products and dynamic content. Kameleon uses a powerfull non-tabular engine to handle _Advanced Relations_ between every resource (products, categories, dynamic content and others). By using this approach, the admininstrators input business rules into the plataform instead of focusing in manual operations for each new resource added.
+Kameleon has the objective to be flexible to different business models and to support an Omni channel.
+In environments where product technical complexity is high, you need to mantain lowering costs,
+improve customer's experience, handle rich data about the products and dynamic content, was in this environment Kameleon was built.
+Kameleon uses a powerfull non-tabular engine to handle _Advanced Relations_ between every resource (products, categories, dynamic content and others).
+By using this approach, the admininstrators input business rules into the platform instead of focusing in manual operations for each new resource added.
+
+<blockquote class="emphasys">
+    _Kameleon_  offers one culture change in pro to reach the omni channel in retail market, spreading
+    in certain intelligent way the technical knowledgement, implanting all brand's mershadising principles,
+    aiming our dream to deliver the best product, in a good quantity with a fair price for our customers
+    as smoothly in all channels.
+</blockquote>
 
 <blockquote class="emphasys">This document will give you a technical overview of the <em>Kameleon Platform</em>. We first discuss the key software layers and architecture. Next, we show you how easly it is to get started with the software usage. We cover our built-in as well as how to do custom integrations with external systems.</blockquote>
 
 ![Kameleon in Action](img/leroy-merlin-br-responsive.png)
+
+
+
+
 
 ## Overview
 
@@ -86,7 +103,7 @@ In order to fully understand and customize the plataform code the following prof
 
 ### Configuration
 
-In Kameleon, most of the configuration is done trought environment variables in the machine where the _Kameleon Application Server_ is running. This approach is more server oriented in order to be more cloud friendly. Most of the cloud solutions allow the use of a single virtual machine image to multiple machines but to customize the environment variables of each one of then. This allows the same server image to be used in all environments (production, staging, etc) where only the environment variables would point to different databases.
+In Kameleon, most of the configuration is done through environment variables in the machine where the _Kameleon Application Server_ is running. This approach is more server oriented in order to be more cloud friendly. Most of the cloud solutions allow the use of a single virtual machine image to multiple machines but to customize the environment variables of each one of then. This allows the same server image to be used in all environments (production, staging, etc) where only the environment variables would point to different databases.
 
 Also it is possible to change de configuration files of _Kameleon Application Server_ by hand. They follow the [Laravel config files convention](http://laravel.com/docs/5.0/configuration) and it is possible to repleace the environment variable input with specific values. This approach is fully supported altought it is not recomended, nor considered very maintainable when you have multiple server instances.
 
@@ -94,7 +111,7 @@ For development environment (using [Vagrant](#install-and-run)) there is no need
 
 ### Customization
 
-All parts of _Kameleon Application Server_ can be customized, if you wish to. Each inner interface that is referenced trought the [IoC Container](http://laravel.com/docs/5.0/container) can be completely replaced. Also, Kameleon can be extended with any _library /package_ that follows the [Composer Convention](https://getcomposer.org/doc/02-libraries.md). Due to that, all the open-source packages listed in the [Packalyst](http://packalyst.com/) and [Packagist.org](https://packagist.org/) can be used to add new capatibilities to the plataform.
+All parts of _Kameleon Application Server_ can be customized, if you wish to. Each inner interface that is referenced through the [IoC Container](http://laravel.com/docs/5.0/container) can be completely replaced. Also, Kameleon can be extended with any _library /package_ that follows the [Composer Convention](https://getcomposer.org/doc/02-libraries.md). Due to that, all the open-source packages listed in the [Packalyst](http://packalyst.com/) and [Packagist.org](https://packagist.org/) can be used to add new capatibilities to the plataform.
 
 <blockquote class="emphasys"><em>Kameleon Platform</em> can be extended with any of the <strong>more than 50 thousand</strong> packages available in Packagist.org</blockquote>
 
@@ -201,7 +218,7 @@ The models in the are built as described in the previous section [Models](#3-mod
 
 When looking at the code in the _Model Layer_, it's important to note that all _domain objects_, _services_ and _repositories_ are placed inside contextual namespaces that will usually explain to which business rule it relates to. Also, each namespace contains a `README.md` file that will describe how it works in isolation.
 
-All the dependencies between the namespaces are done trought dependency injection using  [Laravel's IoC Container](http://laravel.com/docs/5.0/container), so it's possible to replace a whole namespace with a custom code once all the interfaces are implemented accordingly.
+All the dependencies between the namespaces are done through dependency injection using  [Laravel's IoC Container](http://laravel.com/docs/5.0/container), so it's possible to replace a whole namespace with a custom code once all the interfaces are implemented accordingly.
 
 **List of _Namespaces_:**
 
