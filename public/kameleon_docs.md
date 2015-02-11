@@ -6,7 +6,7 @@
 
 Developed with an agile small team at Leroy Merlin Brazil using a set of new web technologies, **Kameleon is a e-commerce platform that is currently being used in production**, hosted using scalable PAAS cloud and displaying more than 60.000 products and over 1000 categories of complex DIY products. The platform is distributed and highly scalable, designed to automate advanced e-merchandising and merchandising concepts to help customer navigate easily among complex product offering.
 
-Kameleon has the objective to be flexible to different business models and to handle multiple sale channels. In order to be able to handle this complexity while at the sime time lowering costs, improving customer experience, handling rich data about the products and dynamic content. Kameleon uses a powerfull non-tabular engine to handle _Advanced Relations_ between every resource (products, categories, dynamic content and others). By using this approach, the admininstrators input business rules into the plataform instead of focusing in manual operations for each new resource added.
+Kameleon has the objective to be flexible to different business models and to handle multiple sale channels. In order to be able to handle this complexity while at the same time lowering costs, improving customer experience, handling rich data about the products and dynamic content. Kameleon uses a powerfull non-tabular engine to handle _Advanced Relations_ between every resource (products, categories, dynamic content and others). By using this approach, the admininstrators input business rules into the plataform instead of focusing in manual operations for each new resource added.
 
 <blockquote class="emphasys">This document will give you a technical overview of the <em>Kameleon Platform</em>. We first discuss the key software layers and architecture. Next, we show you how easly it is to get started with the software usage. We cover our built-in as well as how to do custom integrations with external systems.</blockquote>
 
@@ -67,9 +67,9 @@ Kameleon also uses [Indatus Dispatcher](https://github.com/Indatus/dispatcher), 
 
 ### Install and Run
 
-_Kameleon Application Server_ is easy to install and run. The whole package is less than 1.0GB. Once unzipped into a local directory, the only requirement to run our software is an up-to-date PHP installation _(greater or equal 5.4)_ with the required extensions and Composer. Kameleon also ships with a `Vagrantfile` and a server recipe that allows the setup of the development environment to be done using [Vagrant](http://vagrantup.com/).  Later, in production, the same code that runs on developer machines will also run on the server machines.
+_Kameleon Application Server_ is easy to install and run. The whole package is less than 1.0GB. Once unzipped into a local directory, the only requirement to run our software is an up-to-date PHP installation _(greater or equal 5.4)_ able to run Laravel and Composer. Kameleon also ships with a `Vagrantfile` and a server recipe that allows the setup of the development environment to be done using [Vagrant](http://vagrantup.com/).  Later, in production, the same code that runs on developer machines will also run on the server machines.
 
-<blockquote class="emphasys"><em>Vagrant</em> provides easy to configure, reproducible, and portable work environments built on top of industry-standard virtualization technology and controlled by a single consistent workflow to help maximize the productivity and flexibility of you and your team.</blockquote>
+<blockquote class="emphasys"><em>Vagrant</em> provides easy to configure, reproducible, and portable work environments built on top of industry-standard virtualization technology and controlled by a single consistent workflow to help maximize the productivity and flexibility.</blockquote>
 
 A typical startup of the preconfigured Kameleon on a Virtual Machine using Vagrant takes less than 20 minutes.
 
@@ -199,7 +199,7 @@ The models in the are built as described in the previous section [Models](#3-mod
 
 #### Namespaces
 
-When looking at the code in the _Model Layer_, it's important to note that all _domain objects_, _services_ and _repositories_ are placed inside contextual namespaces that will usually explain to which business rule it relates. Also, each namespace contains a `README.md` file that will describe how it works in isolation.
+When looking at the code in the _Model Layer_, it's important to note that all _domain objects_, _services_ and _repositories_ are placed inside contextual namespaces that will usually explain to which business rule it relates to. Also, each namespace contains a `README.md` file that will describe how it works in isolation.
 
 All the dependencies between the namespaces are done trought dependency injection using  [Laravel's IoC Container](http://laravel.com/docs/5.0/container), so it's possible to replace a whole namespace with a custom code once all the interfaces are implemented accordingly.
 
