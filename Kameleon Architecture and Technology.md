@@ -102,20 +102,6 @@ There are several ways the service container can register dependencies. The regi
 
 _Kameleon_ is also strong in internationalization by using the [localization feature of Laravel](http://laravel.com/docs/5.0/localization). By default it supports portuguese, but you may create your own translation easly.
 
-.
-
-.
-
-.
-
-.
-
-.
-
-.
-
-.
-
 ### Software Architecture
 
 <small>The _Kameleon Application Server_ is build using the [best practices of PHP programming](http://www.phptherightway.com/). Which includes _OO_, _Dependency Injection_, _Coding Standards_, [Composer](https://getcomposer.org) for dependency management, _Test Driven Development_ and _Continuous Integration_. In this section we will present a simplified view on how the main building blocks of the application works.</small>
