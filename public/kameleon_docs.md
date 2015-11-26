@@ -1,4 +1,4 @@
-# Kameleon _Architecture and Technology_
+# Boitata _Architecture and Technology_
 
 ![Kameleon Logo](img/logo.png)
 
