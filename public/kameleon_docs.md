@@ -69,7 +69,7 @@ which is proven to lead to performance degradation, problems in data type integr
 The NoSQL capabilities and performance provided by MongoDB creates a persistency layer
 that is also scalable horizontally and vertically too.
 
-#### Searchengine
+#### Search Engine
 
 _Kameleon's Advanced Relation Technology_ is built using the **Elasticsearch**,
 a flexible and powerful open source, distributed, real-time search and analytics engine.
@@ -99,17 +99,17 @@ Kameleon uses **[Beanstalkd](http://kr.github.io/beanstalkd/)** work queue with 
 
 By using Laravel queue capabilities with Beanstalkd, Kameleon can handle background jobs as exporting reports, batch creation or update of resources, caching, and searchengine communication asynchronously. This improves the response times of the requests that need to be handled in real time while queues background jobs that don't need the same priority as then.
 
-Kameleon also uses [Indatus Dispatcher](https://github.com/Indatus/dispatcher), a command scheduling tool used to schedule jobs per environment. This way you can extend the platform to run custom tasks in the background and in a distributed way.
+Kameleon also uses a command scheduling tool used to schedule jobs per environment. This way you can extend the platform to run custom tasks in the background and in a distributed way.
 
 ## Development
 
 ### Install and Run
 
-_Kameleon Application Server_ is easy to install and run. The whole package is less than 1.0GB. Once unzipped into a local directory, the only requirement to run our software is an up-to-date PHP installation _(greater or equal 5.4)_ able to run Laravel and Composer. Kameleon also ships with a `Vagrantfile` and a server recipe that allows the setup of the development environment to be done using [Vagrant](http://vagrantup.com/).  Later, in production, the same code that runs on developer machines will also run on the server machines.
+_Kameleon Application Server_ is easy to install and run. The whole package is less than 1.0GB. Once unzipped into a local directory, the only requirement to run our software is an up-to-date PHP installation _(greater or equal 7.0)_ able to run Laravel and Composer. Kameleon also ships with a `DOcker` and a server recipe that allows the setup of the development environment to be done using [Docker](http://www.docker.com/).  Later, in production, the same code that runs on developer machines will also run on the server machines.
 
 <blockquote class="emphasys"><em>Vagrant</em> provides easy to configure, reproducible, and portable work environments built on top of industry-standard virtualization technology and controlled by a single consistent workflow to help maximize the productivity and flexibility.</blockquote>
 
-A typical startup of the preconfigured Kameleon on a Virtual Machine using Vagrant takes less than 20 minutes.
+A typical startup of the preconfigured Kameleon on Docker containers takes less than 20 minutes.
 
 ### Developer Profile
 
@@ -134,11 +134,11 @@ different databases.
 Also it is possible to change de configuration files of _Kameleon Application Server_ by hand.
 They follow the [Laravel config files convention](http://laravel.com/docs/5.0/configuration) and it is possible to repleace the environment variable input with specific values. This approach is fully supported altought it is not recomended, nor considered very maintainable when you have multiple server instances.
 
-For development environment (using [Vagrant](#install-and-run)) there is no need to tweak any configuration.
+For development environment (using [Docker](#install-and-run)) there is no need to tweak any configuration.
 
 ### Customization
 
-All parts of _Kameleon Application Server_ can be customized, if you wish to. Each inner interface that is referenced through the [IoC Container](http://laravel.com/docs/5.0/container) can be completely replaced. Also, Kameleon can be extended with any _library /package_ that follows the [Composer Convention](https://getcomposer.org/doc/02-libraries.md). Due to that, all the open-source packages listed in the [Packalyst](http://packalyst.com/) and [Packagist.org](https://packagist.org/) can be used to add new capatibilities to the platform.
+All parts of _Kameleon Application Server_ can be customized, if you wish to. Each inner interface that is referenced through the [IoC Container](http://laravel.com/docs/5.5/container) can be completely replaced. Also, Kameleon can be extended with any _library /package_ that follows the [Composer Convention](https://getcomposer.org/doc/02-libraries.md). Due to that, all the open-source packages listed in the [Packalyst](http://packalyst.com/) and [Packagist.org](https://packagist.org/) can be used to add new capatibilities to the platform.
 
 <blockquote class="emphasys"><em>Kameleon Platform</em> can be extended with any of the <strong>more than 50 thousand</strong> packages available in Packagist.org</blockquote>
 
@@ -214,12 +214,6 @@ contains views that are specific to the administration panel, and the
 of the website. The `front_end` directory contains the `base` template, and
 may contain additional directories for other template.
 
-#### 5 Beanstalkd Queue
-
-Beanstalk is a simple, fast work queue. Its interface is generic, but was originally designed for reducing the latency of page views in high-volume web applications by running time-consuming tasks asynchronously. **Services** may queue jobs that will be processed asynchronously, the queued jobs will call these same **Services** again.
-
-The jobs lives in the `app/jobs` directory.
-
 ##### Queues
 
 There are two queues in the application. The `light` and the `heavy` queue. The `light` is used for search engine indexation and cache cleaning while the `heavy` run more complex operations, I.E: Spreadsheet processing, importing, image processing, etc.
@@ -245,7 +239,7 @@ The models in the are built as described in the previous section [Models](#3-mod
 
 When looking at the code in the _Model Layer_, it's important to note that all _domain objects_, _services_ and _repositories_ are placed inside contextual namespaces that will usually explain to which business rule it relates to. Also, each namespace contains a `README.md` file that will describe how it works in isolation.
 
-All the dependencies between the namespaces are done through dependency injection using  [Laravel's IoC Container](http://laravel.com/docs/5.0/container), so it's possible to replace a whole namespace with a custom code once all the interfaces are implemented accordingly.
+All the dependencies between the namespaces are done through dependency injection using  [Laravel's IoC Container](http://laravel.com/docs/5.5/container), so it's possible to replace a whole namespace with a custom code once all the interfaces are implemented accordingly.
 
 **List of _Namespaces_:**
 
@@ -269,7 +263,8 @@ Namespace             | Description
 `Shipping`          | Shipping information for a orders. It gathers cost and delivery dates.
 `SiteMapper`        | Generates sitemaps for SEO purposes.
 `User`              | Customer related code
-`UserTracker`       | Backed by the `UserTrack` entities. This _namespace_ aims to store the behavior and interactions of each user in a level of detail where it is possible to tell which products and matters of interest are that visitor.
+`UserTracker`       | Backed by the `UserTrack` entities. This _namespace_ aims to store the behavior and interactions of each user in a level of detail where it is possible to tell which products and matters of interest are that visitor.
+`Attribute Groups`  | Organize attributes that are spread in various Product Bank.  
 
 ## Deployment Architecture
 
@@ -279,7 +274,7 @@ An Kameleon deployment is composed by four kind of servers:
 
 - Application server
 - Database servers
-- Searchengine servers
+- Search Engine servers
 - Redis servers
 
 <blockquote class="emphasys">It's important to know the role of each of this components in order to correctly scale the environment. Also software performance monitoring is recomended in order to find the kind of node that should be added to your deployment in order to handle a higher volume of requests.</blockquote>
