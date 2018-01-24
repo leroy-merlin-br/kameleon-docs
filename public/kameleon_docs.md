@@ -1,48 +1,46 @@
 # Boitata _Architecture and Technology_
 
-![Kameleon Logo](img/logo.png)
-
 ## Summary
 
-Developed with an agile small team at Leroy Merlin Brazil applying a set of new innovate web technologies, **Kameleon is a e-commerce platform that is currently being used in production**, hosted using scalable PAAS
-cloud and displaying more than 60.000 products and over 1000 categories of complex DIY products.
-The platform is distributed and highly scalable, designed to automate advanced e-merchandising and merchandising concepts to help customer navigate easily to find the right product, in good quantity with a good price.
+Developed with an agile small team at Leroy Merlin Brazil applying a set of new innovate web technologies, **Boitata is a e-commerce platform that is currently being used in production**, hosted using scalable PAAS
+cloud and displaying more than 60.000 products and over 4000 categories of complex DIY products.
+The platform is distributed and highly scalable, designed to automate advanced e-merchandising and merchandising concepts to help customer navigate easily to find the right product, with quantity and a good price.
 
-Kameleon has the objective to be flexible to different business models and to support an Omni channel.
+Boitata has the objective to be flexible to different business models and to support an Omni channel.
 In environments where product technical complexity is high, you need to mantain lowering costs,
-improve customer's experience, handle rich data about the products and dynamic content, was in this environment Kameleon was built.
+improve customer's experience, handle rich data about the products and dynamic content, was in this environment Boitata was built.
 
-Kameleon uses a powerfull non-tabular engine to handle _Advanced Relations_ between every resource (products, categories, dynamic content and others).
+Boitata uses a powerfull non-tabular engine to handle _Advanced Relations_ between every resource (products, categories, dynamic content and others).
 By using this approach, the admininstrators input business rules into the platform instead of focusing in manual operations for each new resource added.
 
 
->    __Kameleon__  offers one culture change in pro to reach the omni channel in retail market, spreading
+>    __Boitata__  offers one culture change in pro to reach the omni channel in retail market, spreading
 in certain intelligent way the technical knowledgement, implanting all brand's mershadising principles,
 aiming our dream to deliver the best product, in a good quantity with a fair price for our customers
 as smoothly in all channels. **_- Guilherme Guitte_ - Leroy Merlin Brazil Web Developer**
 
 
-**This document will give you a technical overview of the <em>Kameleon Platform</em>. At first, we will discuss the key software layers and architecture. Next, we show you how easly it is to get started with the software usage. We cover our built-in as well as how to do custom integrations with external systems.**
+**This document will give you a technical overview of the <em>Boitata Platform</em>. At first, we will discuss the key software layers and architecture. Next, we show you how easly it is to get started with the software usage. We cover our built-in as well as how to do custom integrations with external systems.**
 
 
-![Kameleon in Action](img/leroy-merlin-br-responsive.png)
+![Boitata in Action](img/leroy-merlin-br-responsive.png)
 
 
 ## Overview
 
-<small>This section will give you a broad overview of the Kameleon architecture. Later we will dive into individual topics, but before we do this,
-we would like you to understand the lean and lightweight approach we have taken for the design of the Kameleon.</small>
+<small>This section will give you a broad overview of the Boitata architecture. Later we will dive into individual topics, but before we do this,
+we would like you to understand the lean and lightweight approach we have taken for the design of the Boitata.</small>
 
 ### Technologied Involved
 
-Kameleon is built on top of the [Laravel Framework](http://laravel.com) using modern PHP code,
+Boitata is built on top of the [Laravel Framework](http://laravel.com) using modern PHP code,
 [MongoDB](http://www.mongodb.org/) as it's primary storage and [Elasticsearch](http://www.elasticsearch.org/)
 as the Search engine behind the _Advanced Relation_ technology. The platform is distributed, high performant and all
 the main components are horizontally scallable.
 
 #### Application Server
 
-_Kameleon Application Server_ has been constructed using Laravel, a web framework made to build huge enterprise applications.
+_Boitata Application Server_ has been constructed using Laravel, a web framework made to build huge enterprise applications.
 It is built on top of several [Symfony](http://symfony.com/) components, giving the platform a great foundation of well-tested
 and reliable code. Laravel core uses the [inversion of control architecture](http://en.wikipedia.org/wiki/Inversion_of_control)
 to increase modularity of the program and make it extensible.
@@ -71,10 +69,10 @@ that is also scalable horizontally and vertically too.
 
 #### Search Engine
 
-_Kameleon's Advanced Relation Technology_ is built using the **Elasticsearch**,
+_Boitata's Advanced Relation Technology_ is built using the **Elasticsearch**,
 a flexible and powerful open source, distributed, real-time search and analytics engine.
 Architected from the ground up for use in distributed environments where reliability and scalability
-are must haves, Elasticsearch gives __Kameleon__ the ability to move easily beyond reference relations
+are must haves, Elasticsearch gives __Boitata__ the ability to move easily beyond reference relations
 between resources and simple full-text searchs.
 
 Through the usage of the Searchengine the platform can handle facets, analytics and
@@ -84,32 +82,32 @@ that matched by the rules with facet and text-search support.
 
 #### Caching
 
-The _Kameleon Cache Middleware_ is part of the Kameleon server and it reduces the amount of database and searchengine queries. Besides the overall lean and efficient architecture, it is another reason why Kameleon has greater performance per single server node than other solutions. The persistence cache transparently caches requests responses and query results into memory and automatically clear these caches if a change in the involved resources happened.
+The _Boitata Cache Middleware_ is part of the Boitata server and it reduces the amount of database and search engine queries. Besides the overall lean and efficient architecture, it is another reason why Boitata has greater performance per single server node than other solutions. The persistence cache transparently caches requests responses and query results into memory and automatically clear these caches if a change in the involved resources happened.
 
-For a cached request, many of the application components doens't even need to be instanciated. The request can be responded before even reaching the controllers. Due to this, it is not needed to use an reverse proxy for most deployments.
+For a cached request, many of the application components doesn't even need to be instanciated. The request can be responded before even reaching the controllers. Due to this, it is not needed to use an reverse proxy for most deployments.
 
-The storage technology used behind _Kameleon Cache Middleware_ is [Redis](http://redis.io/), an open source, BSD licensed, advanced key-value cache and store database.
+The storage technology used behind _Boitata Cache Middleware_ is [Redis](http://redis.io/), an open source, BSD licensed, advanced key-value cache and store database.
 
-> "With more than 5000 pageviews per minute in our production environment we didn't have to use any kind of reverse proxy. _Kameleon Cache Middleware_ handles all the requests, faceted searchs and _advanced relations_ for more than 5 million unique visitors per month with only three server nodes."
+> "With more than 7000 pageviews per minute in our production environment we didn't have to use any kind of reverse proxy. _Boitata Cache Middleware_ handles all the requests, faceted searchs and _advanced relations_ for more than 5 million unique visitors per month with only three server nodes."
 **_- Zizaco Zizuini_ - Leroy Merlin Brazil Web Developer**
 
 #### Asynchronous Jobs
 
-Kameleon uses **[Beanstalkd](http://kr.github.io/beanstalkd/)** work queue with a generic interface that was originally designed for reducing the latency of page views in high-volume web applications by running time-consuming tasks asynchronously.
+Boitata uses **[Beanstalkd](http://kr.github.io/beanstalkd/)** work queue with a generic interface that was originally designed for reducing the latency of page views in high-volume web applications by running time-consuming tasks asynchronously.
 
-By using Laravel queue capabilities with Beanstalkd, Kameleon can handle background jobs as exporting reports, batch creation or update of resources, caching, and searchengine communication asynchronously. This improves the response times of the requests that need to be handled in real time while queues background jobs that don't need the same priority as then.
+By using Laravel queue capabilities with Beanstalkd, Boitata can handle background jobs as exporting reports, batch creation or update of resources, caching, and searchengine communication asynchronously. This improves the response times of the requests that need to be handled in real time while queues background jobs that don't need the same priority as then.
 
-Kameleon also uses a command scheduling tool used to schedule jobs per environment. This way you can extend the platform to run custom tasks in the background and in a distributed way.
+Boitata also uses a command scheduling tool used to schedule jobs per environment. This way you can extend the platform to run custom tasks in the background and in a distributed way.
 
 ## Development
 
 ### Install and Run
 
-_Kameleon Application Server_ is easy to install and run. The whole package is less than 1.0GB. Once unzipped into a local directory, the only requirement to run our software is an up-to-date PHP installation _(greater or equal 7.0)_ able to run Laravel and Composer. Kameleon also ships with a `DOcker` and a server recipe that allows the setup of the development environment to be done using [Docker](http://www.docker.com/).  Later, in production, the same code that runs on developer machines will also run on the server machines.
+_Boitata Application Server_ is easy to install and run. The whole package is less than 1.0GB. Once unzipped into a local directory, the only requirement to run our software is an up-to-date PHP installation _(greater or equal 7.0)_ able to run Laravel and Composer. Boitata also ships with a `Docker` and a server recipe that allows the setup of the development environment to be done using [Docker](http://www.docker.com/).  Later, in production, the same code that runs on developer machines will also run on the server machines.
 
 <blockquote class="emphasys"><em>Vagrant</em> provides easy to configure, reproducible, and portable work environments built on top of industry-standard virtualization technology and controlled by a single consistent workflow to help maximize the productivity and flexibility.</blockquote>
 
-A typical startup of the preconfigured Kameleon on Docker containers takes less than 20 minutes.
+A typical startup of the preconfigured Boitata on Docker containers takes less than 20 minutes.
 
 ### Developer Profile
 
@@ -124,33 +122,33 @@ In order to fully understand and customize the platform code the following profi
 
 ### Configuration
 
-In Kameleon, most of the configuration is done through environment variables in the machine where the
-_Kameleon Application Server_ is running. This approach is more server oriented in order to be more cloud
+In Boitata, most of the configuration is done through environment variables in the machine where the
+_Boitata Application Server_ is running. This approach is more server oriented in order to be more cloud
 friendly. Most of the cloud solutions allow the use of a single virtual machine image to multiple machines
 but to customize the environment variables of each one of then. This allows the same server image to be
 used in all environments (production, staging, etc) where only the environment variables would point to
 different databases.
 
-Also it is possible to change de configuration files of _Kameleon Application Server_ by hand.
+Also it is possible to change de configuration files of _Boitata Application Server_ by hand.
 They follow the [Laravel config files convention](http://laravel.com/docs/5.0/configuration) and it is possible to repleace the environment variable input with specific values. This approach is fully supported altought it is not recomended, nor considered very maintainable when you have multiple server instances.
 
 For development environment (using [Docker](#install-and-run)) there is no need to tweak any configuration.
 
 ### Customization
 
-All parts of _Kameleon Application Server_ can be customized, if you wish to. Each inner interface that is referenced through the [IoC Container](http://laravel.com/docs/5.5/container) can be completely replaced. Also, Kameleon can be extended with any _library /package_ that follows the [Composer Convention](https://getcomposer.org/doc/02-libraries.md). Due to that, all the open-source packages listed in the [Packalyst](http://packalyst.com/) and [Packagist.org](https://packagist.org/) can be used to add new capatibilities to the platform.
+All parts of _Boitata Application Server_ can be customized, if you wish to. Each inner interface that is referenced through the [IoC Container](http://laravel.com/docs/5.5/container) can be completely replaced. Also, Boitata can be extended with any _library /package_ that follows the [Composer Convention](https://getcomposer.org/doc/02-libraries.md). Due to that, all the open-source packages listed in the [Packalyst](http://packalyst.com/) and [Packagist.org](https://packagist.org/) can be used to add new capatibilities to the platform.
 
-<blockquote class="emphasys"><em>Kameleon Platform</em> can be extended with any of the <strong>more than 50 thousand</strong> packages available in Packagist.org</blockquote>
+<blockquote class="emphasys"><em>Boitata Platform</em> can be extended with any of the <strong>more than 50 thousand</strong> packages available in Packagist.org</blockquote>
 
 The [Laravel service container](http://laravel.com/docs/5.0/container) is a powerful tool for managing class dependencies. [Dependency injection](http://en.wikipedia.org/wiki/Dependency_injection) is a fancy word that essentially means that class dependencies are _"injected"_ into the class via the constructor or, in some cases, _"setter"_ methods.
 
-There are several ways the service container can register dependencies. The registration of these dependencies allows the developers to easly replace any component of the application. Of course a deep understanding of the Laravel service container is essential to building powerful custom features, as well as for contributing to the _Kameleon Application Server_.
+There are several ways the service container can register dependencies. The registration of these dependencies allows the developers to easly replace any component of the application. Of course a deep understanding of the Laravel service container is essential to building powerful custom features, as well as for contributing to the _Boitata Application Server_.
 
-_Kameleon_ is also strong in internationalization by using the [localization feature of Laravel](http://laravel.com/docs/5.0/localization). By default it supports portuguese, but you may create your own translation easly.
+_Boitata_ is also strong in internationalization by using the [localization feature of Laravel](http://laravel.com/docs/5.0/localization). By default it supports portuguese, but you may create your own translation easly.
 
 ### Software Architecture
 
-<small>The _Kameleon Application Server_ is build using the [best practices of PHP programming](http://www.phptherightway.com/). Which includes _OO_, _Dependency Injection_, _Coding Standards_, [Composer](https://getcomposer.org) for dependency management, _Test Driven Development_ and _Continuous Integration_. In this section we will present a simplified view on how the main building blocks of the application works.</small>
+<small>The _Boitata Application Server_ is build using the [best practices of PHP programming](http://www.phptherightway.com/). Which includes _OO_, _Dependency Injection_, _Coding Standards_, [Composer](https://getcomposer.org) for dependency management, _Test Driven Development_ and _Continuous Integration_. In this section we will present a simplified view on how the main building blocks of the application works.</small>
 
 ![Software Architecture](img/software-architecture-diagram.png)
 
@@ -173,7 +171,7 @@ The tests for the controllers (that also test the routes) lives within `app/test
 
 The components domain objects and services are organized in namespaces (and directories) that describe to which subject they relate to.
 
-In order to understand the **Model Layer** of Kameleon is important to make the following terminology clear:
+In order to understand the **Model Layer** of Boitata is important to make the following terminology clear:
 
 ##### Domain Objects
 
@@ -251,7 +249,6 @@ Namespace             | Description
 `Cart`              | Implements the shopping cart for eCommerce.
 `Checkout`          | Assembles and retrieve the objects that are used in the checkout process.
 `Content`           | Contains all the CMS related code.
-`Course`            | Handles course scheduling and signup.
 `Dashboard`         | Group all information that is relevant to the admin panel dashboard.
 `Email`             | Email related business rules.
 `Multitree`         | The implementation of the [Multitree concept](http://en.wikipedia.org/wiki/Multitree)
@@ -268,9 +265,9 @@ Namespace             | Description
 
 ## Deployment Architecture
 
-<small>The main components of a Kameleon deployment are distributed and horizontally scalable, being possible to handle a growing volume of request simply by adding more nodes to the deployment.</small>
+<small>The main components of a Boitata deployment are distributed and horizontally scalable, being possible to handle a growing volume of request simply by adding more nodes to the deployment.</small>
 
-An Kameleon deployment is composed by four kind of servers:
+An Boitata deployment is composed by four kind of servers:
 
 - Application server
 - Database servers
